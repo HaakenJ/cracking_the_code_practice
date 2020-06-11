@@ -21,7 +21,12 @@ function compressString(str) {
         }
     }
     result += count;
-    return result;
+
+    if (result.length < str.length) {
+        return result;
+    } else {
+        return str;
+    }
 }
 
 console.log(compressString(input));
