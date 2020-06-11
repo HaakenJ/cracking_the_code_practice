@@ -1,18 +1,26 @@
 const input = process.argv[2];
-// let input = "aabbcc";
+// let input = "aabbcccaa";
 
 function compressString(str) {
-    const charDict = {};
-    for (let char of str) {
-        if (charDict[char] > 0) charDict[char]++;
-        else charDict[char] = 1;
-    }
-
     let result = "";
-    for (let char in charDict) {
-        result = result + char + charDict[char];
+    let i = 0;
+    let count = 0;
+    for (let char of str) {
+        if (result.length === 0) {
+            result += char;
+            count++;
+        }
+        else {
+            if (result[i] === char) count++;
+            else {
+                result += count;
+                result += char;
+                count = 1;
+                i += 2;
+            }
+        }
     }
-
+    result += count;
     return result;
 }
 
