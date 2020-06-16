@@ -20,6 +20,4 @@ function rotateMatrix(matrix) {
     return result;
 }
 
-console.log(rotateMatrix(matrix));
-
 module.exports = rotateMatrix;

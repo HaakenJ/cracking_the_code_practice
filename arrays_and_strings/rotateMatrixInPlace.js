@@ -40,8 +40,4 @@ function rotateMatrixInPlace(matrix) {
     return matrix;
 }
 
-console.log(rotateMatrixInPlace(matrix3));
-console.log(rotateMatrixInPlace(matrix4));
-console.log(rotateMatrixInPlace(matrix5));
-
 module.exports = rotateMatrixInPlace;
