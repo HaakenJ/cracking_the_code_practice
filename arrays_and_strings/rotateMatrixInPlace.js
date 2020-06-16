@@ -19,7 +19,7 @@ const matrix5= [
     [21,22,23,24,25]
 ]
 
-function rotateMatrix(matrix) {
+function rotateMatrixInPlace(matrix) {
     if (matrix.length <= 1) return matrix;
 
     const n = matrix.length - 1;
@@ -40,6 +40,8 @@ function rotateMatrix(matrix) {
     return matrix;
 }
 
-console.log(rotateMatrix(matrix3));
-console.log(rotateMatrix(matrix4));
-console.log(rotateMatrix(matrix5));
+console.log(rotateMatrixInPlace(matrix3));
+console.log(rotateMatrixInPlace(matrix4));
+console.log(rotateMatrixInPlace(matrix5));
+
+module.exports = rotateMatrixInPlace;

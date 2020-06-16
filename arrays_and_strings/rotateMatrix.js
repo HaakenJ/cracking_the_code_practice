@@ -21,3 +21,5 @@ function rotateMatrix(matrix) {
 }
 
 console.log(rotateMatrix(matrix));
+
+module.exports = rotateMatrix;
