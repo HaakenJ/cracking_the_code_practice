@@ -1,12 +1,10 @@
 const chai = require('chai');
-const assertArrays = require('chai-arrays');
 const expect = chai.expect;
-chai.use(assertArrays);
 
 
 // Arrays and Strings
-const rotateMatrixInPlace = require('./arrays_and_strings/rotateMatrixInPlace');
-const rotateMatrix = require('./arrays_and_strings/rotateMatrix');
+const rotateMatrixInPlace = require('./rotateMatrixInPlace');
+const rotateMatrix = require('./rotateMatrix');
 
 describe('Rotate Matrix', () => {
     const matrix3 = [
