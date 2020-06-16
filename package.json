@@ -1,0 +1,23 @@
+{
+  "name": "cracking_the_code_practice",
+  "version": "1.0.0",
+  "description": "JavaScript solutions to Cracking The Coding Interview questions",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaakenJ/cracking_the_code_practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HaakenJ/cracking_the_code_practice/issues"
+  },
+  "homepage": "https://github.com/HaakenJ/cracking_the_code_practice#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1"
+  }
+}
