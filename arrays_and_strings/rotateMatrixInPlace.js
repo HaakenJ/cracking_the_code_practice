@@ -21,10 +21,15 @@ const matrix5= [
 
 function rotateMatrix(matrix) {
     if (matrix.length <= 1) return matrix;
-    const n = matrix.length - 1;
 
+    const n = matrix.length - 1;
+    // Keep track of the first an last items in the row, these values converge
+    // as the algorithm moves to the inner matricies.
     for (let first=0, last=n; first<last; first++, last--) {
+        // Keep track of an offset for the current outer layer of the matrix
+        // Increasing the offset moves the current item to the right.
         for (let offset = 0; first+offset < last; offset++) {
+
             const temp = matrix[first][first + offset];
             matrix[first][first + offset] = matrix[last - offset][first];
             matrix[last - offset][first]  = matrix[last][last - offset];
