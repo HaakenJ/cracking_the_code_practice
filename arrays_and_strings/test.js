@@ -1,4 +1,5 @@
 const chai = require('chai');
+const expect = chai.expect;
 
 const rotateMatrixInPlace = require('./rotateMatrixInPlace');
 const rotateMatrix = require('./rotateMatrix');
@@ -78,5 +79,26 @@ describe('Rotate Matrix', () => {
             [24,19,14,9,4],
             [25,20,15,10,5]
         ])
+    })
+})
+
+describe('Check palindrome', () => {
+    const isPalinOdd = 'abcdxdcba';
+    const isPalinEven = 'abccba';
+    const sameLetters = 'aaaaaaaa';
+    const notPalin = 'abcd';
+    const single = 'a';
+    const withSpaces = 'a man a plan a canal panama';
+
+    it('Should return true', () => {
+        expect(checkPalinedrome(isPalinEven)).to.be.true;
+        expect(checkPalinedrome(isPalinOdd)).to.be.true;
+        expect(checkPalinedrome(sameLetters)).to.be.true;
+        expect(checkPalinedrome(single)).to.be.true;
+        expect(checkPalinedrome(withSpaces)).to.be.true;
+    })
+
+    it('Should return false', () => {
+        expect(checkPalinedrome(notPalin)).to.be.false;
     })
 })
