@@ -1,10 +1,8 @@
 const chai = require('chai');
-const expect = chai.expect;
 
-
-// Arrays and Strings
 const rotateMatrixInPlace = require('./rotateMatrixInPlace');
 const rotateMatrix = require('./rotateMatrix');
+const checkPalinedrome = require('./checkPalindrome');
 
 describe('Rotate Matrix', () => {
     const matrix3 = [

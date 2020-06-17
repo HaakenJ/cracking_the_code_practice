@@ -1,4 +1,4 @@
-const str = process.argv.slice(2,).join("");
+// const str = process.argv.slice(2,).join("");
 
 function checkPalindrome(str) {
     if (str.length > 1) {
@@ -25,4 +25,4 @@ function checkPalindrome(str) {
     return true;
 }
 
-console.log(checkPalindrome(str));
+module.exports = checkPalindrome;
