@@ -4,6 +4,7 @@ const expect = chai.expect;
 const rotateMatrixInPlace = require('./rotateMatrixInPlace');
 const rotateMatrix = require('./rotateMatrix');
 const checkPalinedrome = require('./checkPalindrome');
+const zeroMatrix = require('./zeroMatrix');
 
 describe('Rotate Matrix', () => {
     const matrix3 = [
