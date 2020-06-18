@@ -1,24 +1,3 @@
-const matrix3 = [
-    [1,2,0],
-    [4,5,6],
-    [7,8,9]
-]
-
-const matrix4 = [
-    [1,2,0,4],
-    [5,6,7,8],
-    [0,10,11,12],
-    [13,14,15,16]
-]
-
-const matrix5= [
-    [0,2,3,4,5],
-    [6,7,8,9,10],
-    [11,12,13,14,15],
-    [16,17,18,19,20],
-    [21,22,23,24,0]
-]
-
 function cloneMatrix(matrix) {
     let matClone = [];
     for (let i = 0; i < matrix.length; i++) {
@@ -65,6 +44,4 @@ function zeroMatrix(matrix) {
     return matClone;
 }
 
-console.log(zeroMatrix(matrix3));
-console.log(zeroMatrix(matrix4));
-console.log(zeroMatrix(matrix5));
+module.exports = zeroMatrix;

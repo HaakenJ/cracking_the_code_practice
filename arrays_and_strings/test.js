@@ -103,3 +103,84 @@ describe('Check palindrome', () => {
         expect(checkPalinedrome(notPalin)).to.be.false;
     })
 })
+
+describe('Zero Matrix', () => {
+    it('Should change rows and columns with 0\'s to all zeros', () => {
+        const matrix3 = [
+            [0,2,3],
+            [4,5,6],
+            [7,8,9]
+        ];
+        
+        const matrix4 = [
+            [1,2,3,4],
+            [5,6,7,8],
+            [0,10,11,12],
+            [13,14,15,16]
+        ];
+        
+        const matrix5= [
+            [1,2,3,4,5],
+            [6,7,8,9,10],
+            [11,12,13,14,15],
+            [16,17,18,19,20],
+            [0,22,23,24,25]
+        ];
+
+        const matrix5Cross= [
+            [1,2,3,4,5],
+            [6,7,8,9,10],
+            [11,12,0,14,15],
+            [16,17,18,19,20],
+            [21,22,23,24,25]
+        ];
+
+        expect(zeroMatrix(matrix3)).to.deep.equal([
+            [0,0,0],
+            [0,5,6],
+            [0,8,9]
+        ])
+
+        expect(zeroMatrix(matrix4)).to.deep.equal([
+            [0,2,3,4],
+            [0,6,7,8],
+            [0,0,0,0],
+            [0,14,15,16]
+        ])
+
+        expect(zeroMatrix(matrix5)).to.deep.equal([
+            [0,2,3,4,5],
+            [0,7,8,9,10],
+            [0,12,13,14,15],
+            [0,17,18,19,20],
+            [0,0,0,0,0]
+        ])
+
+        expect(zeroMatrix(matrix5Cross)).to.deep.equal([
+            [1,2,0,4,5],
+            [6,7,0,9,10],
+            [0,0,0,0,0],
+            [16,17,0,19,20],
+            [21,22,0,24,25]
+        ])
+    })
+
+    it('Should return false for invalid matrix', () => {
+        expect(zeroMatrix([1,2,3])).to.be.false
+        expect(zeroMatrix([])).to.be.false
+    })
+
+    it('Should not change a maxtrix with no zeros', () => {
+        const matrix3 = [
+            [1,2,3],
+            [4,5,6],
+            [7,8,9]
+        ];
+
+        expect(zeroMatrix(matrix3)).to.deep.equal([
+            [1,2,3],
+            [4,5,6],
+            [7,8,9]
+        ])
+    })
+})
