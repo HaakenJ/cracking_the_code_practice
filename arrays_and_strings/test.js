@@ -12,7 +12,12 @@ describe('String Compression', () => {
     it('Should properly compress strings', () => {
         expect(stringCompression('aaabbbcccaaa')).to.equal('a3b3c3a3');
         expect(stringCompression('aaaaa')).to.equal('a5');
-        expect(stringCompression('AAaaBBbb')).to.equal('A2a2B2b2');
+        expect(stringCompression('AAaaBBbbb')).to.equal('A2a2B2b3');
+    })
+
+    it('Should return the original string because it is shorter', () => {
+        expect(stringCompression('abcdef')).to.equal('abcdef');
+        expect(stringCompression('a')).to.equal('a');
     })
 })
 
