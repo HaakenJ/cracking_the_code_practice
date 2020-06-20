@@ -1,5 +1,5 @@
-const str1 = process.argv[2];
-const str2 = process.argv[3];
+// const str1 = process.argv[2];
+// const str2 = process.argv[3];
 
 function isOneAway(str1, str2) {
     if (Math.abs(str1.length - str2.length) > 1) return false;
@@ -37,4 +37,4 @@ function needsOneInsert(str1, str2) {
     return true;
 }
 
-console.log(isOneAway(str1, str2));
+module.exports = isOneAway;

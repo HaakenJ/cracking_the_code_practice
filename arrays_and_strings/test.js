@@ -1,10 +1,41 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const rotateMatrixInPlace = require('./rotateMatrixInPlace');
-const rotateMatrix = require('./rotateMatrix');
 const checkPalinedrome = require('./checkPalindrome');
+const stringCompression = require('./stringCompress');
+const oneAway = require('./oneAway');
+const rotateMatrix = require('./rotateMatrix');
+const rotateMatrixInPlace = require('./rotateMatrixInPlace');
 const zeroMatrix = require('./zeroMatrix');
+
+describe('String Compression', () => {
+    it('Should properly compress strings', () => {
+        expect(stringCompression('aaabbbcccaaa')).to.equal('a3b3c3a3');
+        expect(stringCompression('aaaaa')).to.equal('a5');
+        expect(stringCompression('AAaaBBbb')).to.equal('A2a2B2b2');
+    })
+})
+
+describe('Check palindrome', () => {
+    const isPalinOdd = 'abcdxdcba';
+    const isPalinEven = 'abccba';
+    const sameLetters = 'aaaaaaaa';
+    const notPalin = 'abcd';
+    const single = 'a';
+    const withSpaces = 'a man a plan a canal panama';
+
+    it('Should return true', () => {
+        expect(checkPalinedrome(isPalinEven)).to.be.true;
+        expect(checkPalinedrome(isPalinOdd)).to.be.true;
+        expect(checkPalinedrome(sameLetters)).to.be.true;
+        expect(checkPalinedrome(single)).to.be.true;
+        expect(checkPalinedrome(withSpaces)).to.be.true;
+    })
+
+    it('Should return false', () => {
+        expect(checkPalinedrome(notPalin)).to.be.false;
+    })
+})
 
 describe('Rotate Matrix', () => {
     const matrix3 = [
@@ -80,27 +111,6 @@ describe('Rotate Matrix', () => {
             [24,19,14,9,4],
             [25,20,15,10,5]
         ])
-    })
-})
-
-describe('Check palindrome', () => {
-    const isPalinOdd = 'abcdxdcba';
-    const isPalinEven = 'abccba';
-    const sameLetters = 'aaaaaaaa';
-    const notPalin = 'abcd';
-    const single = 'a';
-    const withSpaces = 'a man a plan a canal panama';
-
-    it('Should return true', () => {
-        expect(checkPalinedrome(isPalinEven)).to.be.true;
-        expect(checkPalinedrome(isPalinOdd)).to.be.true;
-        expect(checkPalinedrome(sameLetters)).to.be.true;
-        expect(checkPalinedrome(single)).to.be.true;
-        expect(checkPalinedrome(withSpaces)).to.be.true;
-    })
-
-    it('Should return false', () => {
-        expect(checkPalinedrome(notPalin)).to.be.false;
     })
 })
 

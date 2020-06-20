@@ -1,4 +1,4 @@
-const input = process.argv[2];
+// const input = process.argv[2];
 // let input = "aabbcccaa";
 
 function compressString(str) {
@@ -29,4 +29,4 @@ function compressString(str) {
     }
 }
 
-console.log(compressString(input));
+module.exports = compressString;
