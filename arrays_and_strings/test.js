@@ -7,6 +7,7 @@ const oneAway = require('./oneAway');
 const rotateMatrix = require('./rotateMatrix');
 const rotateMatrixInPlace = require('./rotateMatrixInPlace');
 const zeroMatrix = require('./zeroMatrix');
+const stringRotation = require('./stringRotation');
 
 describe('String Compression', () => {
     it('Should properly compress strings', () => {
@@ -197,5 +198,19 @@ describe('Zero Matrix', () => {
             [4,5,6],
             [7,8,9]
         ])
+    })
+})
+
+describe('String Rotation', () => {
+    it('Should return true for valid rotations', () => {
+        expect(stringRotation('waterbottle', 'erbottlewat')).to.be.true;
+        expect(stringRotation('aba','baa')).to.be.true;
+        expect(stringRotation('wawawaterbottle', 'lewawawaterbott')).to.be.true;
+    })
+
+    it('Should return false for invalid rotations', () => {
+        expect(stringRotation('waterbottle', 'bottwaterle')).to.be.false;
+        expect(stringRotation('aba','bba')).to.be.false;
+        expect(stringRotation('wawaterbottle','lewawawaterbott')).to.be.false;
     })
 })
