@@ -1,18 +1,34 @@
 const { LinkedList, Node } = require('./LinkedList');
 
+// deleteDupes = (head) => {
+//     let n = head;
+//     const hashMap = {};
+//     while (n.next !== null) {
+//         hashMap[n.data] >= 0 ? hashMap[n.data]++ : hashMap[n.data] = 1;
+//         n = n.next;
+//     }
+//     hashMap[n.data] >= 0 ? hashMap[n.data]++ : hashMap[n.data] = 1;
+//     n = head;
+//     while (n.next !== null) {
+//         if (hashMap[n.next.data] > 1) {
+//             hashMap[n.next.data]--;
+//             n.next = n.next.next;
+//         }
+//         n = n.next;
+//     }
+//     return head;
+// }
+
 deleteDupes = (head) => {
     let n = head;
     const hashMap = {};
-    while (n.next !== null) {
-        hashMap[n.data] >= 0 ? hashMap[n.data]++ : hashMap[n.data] = 1;
-        n = n.next;
-    }
-    hashMap[n.data] >= 0 ? hashMap[n.data]++ : hashMap[n.data] = 1;
-    n = head;
-    while (n.next !== null) {
-        if (hashMap[n.next.data] > 1) {
-            hashMap[n.next.data]--;
-            n.next = n.next.next;
+    let previous = null;
+    while (n !== null) {
+        if (hashMap[n.data]) {
+            previous.next = n.next;
+        } else {
+            hashMap[n.data] = true;
+            previous = n;
         }
         n = n.next;
     }
