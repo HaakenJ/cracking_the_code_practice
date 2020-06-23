@@ -3,8 +3,8 @@ class LinkedList {
         this.head = null;
     }
 
-    printList = () => {
-        let n = this.head;
+    static printList = (head) => {
+        let n = head;
         while (n.next !== null) {
             console.log(n.data);
             n = n.next;
@@ -12,8 +12,8 @@ class LinkedList {
         console.log(n.data);
     }
 
-    toArray = () => {
-        let n = this.head;
+    static toArray = (head) => {
+        let n = head;
         let result = [];
         while (n.next !== null) {
             result.push(n.data);
