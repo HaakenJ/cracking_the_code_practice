@@ -3,6 +3,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const deleteDupes = require('./deleteDupes');
+const deleteMiddleNode = require('./deleteMiddleNode');
 
 
 
@@ -64,5 +65,36 @@ describe('Delete Duplicates', () => {
 
         const result = deleteDupes(ll.head);
         expect(LinkedList.toArray(result)).to.deep.equal([1,2,3,4,5]);
+    })
+})
+
+describe('Delete Middle Node', () => {
+    it('Should remove any middle node', () => {
+        const ll = new LinkedList;
+        const first = new Node('a');
+        const second = new Node('b');
+        const third = new Node('c');
+        const fourth = new Node('d');
+        const fifth = new Node ('e');
+        const sixth = new Node('f');
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+
+        deleteMiddleNode(second);
+
+        expect(LinkedList.toArray(ll.head)).to.deep.equal(['a','c','d','e','f']);
+
+        deleteMiddleNode(fourth);
+
+        expect(LinkedList.toArray(ll.head)).to.deep.equal(['a','c','d','f']);
+
+        deleteMiddleNode(third);
+
+        expect(LinkedList.toArray(ll.head)).to.deep.equal(['a','c','f']);
     })
 })
