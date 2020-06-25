@@ -3,6 +3,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const deleteDupes = require('./deleteDupes');
+const partitionList = require('./partitionList');
 
 
 
@@ -64,5 +65,45 @@ describe('Delete Duplicates', () => {
 
         const result = deleteDupes(ll.head);
         expect(LinkedList.toArray(result)).to.deep.equal([1,2,3,4,5]);
+    })
+})
+
+describe('Patition Linked List', () => {
+    it('Should correctly partition a list', () => {
+        let ll = new LinkedList;
+        let first = new Node(1);
+        let second = new Node(6);
+        let third = new Node(9);
+        let fourth = new Node(10);
+        let fifth = new Node (2);
+        let sixth = new Node(3);
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+
+        let result = partitionList(5, ll.head);
+
+        expect(LinkedList.toArray(result)).to.deep.equal([1,2,3,6,9,10]);
+
+        let ll = new LinkedList;
+        let first = new Node(12);
+        let second = new Node(2);
+        let third = new Node(7);
+        let fourth = new Node(99);
+        let fifth = new Node (-1);
+        let sixth = new Node(-5);
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+
+        let result = partitionList(10, ll.head);
     })
 })
