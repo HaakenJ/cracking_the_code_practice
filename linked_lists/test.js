@@ -3,11 +3,8 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const deleteDupes = require('./deleteDupes');
-<<<<<<< HEAD
 const partitionList = require('./partitionList');
-=======
 const deleteMiddleNode = require('./deleteMiddleNode');
->>>>>>> 44d24759da253472301bcfba0d07c26b9a128a1c
 
 
 
@@ -72,17 +69,6 @@ describe('Delete Duplicates', () => {
     })
 })
 
-<<<<<<< HEAD
-describe('Patition Linked List', () => {
-    it('Should correctly partition a list', () => {
-        let ll = new LinkedList;
-        let first = new Node(1);
-        let second = new Node(6);
-        let third = new Node(9);
-        let fourth = new Node(10);
-        let fifth = new Node (2);
-        let sixth = new Node(3);
-=======
 describe('Delete Middle Node', () => {
     it('Should remove any middle node', () => {
         const ll = new LinkedList;
@@ -92,7 +78,37 @@ describe('Delete Middle Node', () => {
         const fourth = new Node('d');
         const fifth = new Node ('e');
         const sixth = new Node('f');
->>>>>>> 44d24759da253472301bcfba0d07c26b9a128a1c
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+
+        deleteMiddleNode(second);
+
+        expect(LinkedList.toArray(ll.head)).to.deep.equal(['a','c','d','e','f']);
+
+        deleteMiddleNode(fourth);
+
+        expect(LinkedList.toArray(ll.head)).to.deep.equal(['a','c','e','f']);
+
+        deleteMiddleNode(fourth);
+
+        expect(LinkedList.toArray(ll.head)).to.deep.equal(['a','c','f']);
+    })
+})
+
+describe('Patition Linked List', () => {
+    it('Should correctly partition a list', () => {
+        let ll = new LinkedList;
+        let first = new Node(1);
+        let second = new Node(6);
+        let third = new Node(9);
+        let fourth = new Node(10);
+        let fifth = new Node (2);
+        let sixth = new Node(3);
 
         ll.head = first;
         first.next = second;
@@ -201,16 +217,5 @@ describe('Delete Middle Node', () => {
         result = partitionList(7, ll.head);
 
         expect(LinkedList.toArray(result)).to.deep.equal([1,2,3,5,6,7]);
-        deleteMiddleNode(second);
-
-        expect(LinkedList.toArray(ll.head)).to.deep.equal(['a','c','d','e','f']);
-
-        deleteMiddleNode(fourth);
-
-        expect(LinkedList.toArray(ll.head)).to.deep.equal(['a','c','d','f']);
-
-        deleteMiddleNode(third);
-
-        expect(LinkedList.toArray(ll.head)).to.deep.equal(['a','c','f']);
     })
 })
