@@ -7,20 +7,19 @@ const swap = (first, second) => {
 }
 
 const partitionList = (val, head) => {
-    let partition = null;
+    let partition = head;
     let n = head;
     while (n !== null) {
         if (n.data < val) {
-            if (partition === null) partition = n;
-            else {
-                swap(partition.next, n);
-                partition = partition.next;
-            }
+            swap(partition, n);
+            partition = partition.next;
        }
        n = n.next;
     }
     return head;
 }
+
+module.exports = partitionList;
 
 // const ll = new LinkedList;
 // const first = new Node(1);
