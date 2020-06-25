@@ -87,15 +87,15 @@ describe('Patition Linked List', () => {
 
         let result = partitionList(5, ll.head);
 
-        expect(LinkedList.toArray(result)).to.deep.equal([1,2,3,6,9,10]);
+        expect(LinkedList.toArray(result)).to.deep.equal([1,2,3,10,6,9]);
 
-        let ll = new LinkedList;
-        let first = new Node(12);
-        let second = new Node(2);
-        let third = new Node(7);
-        let fourth = new Node(99);
-        let fifth = new Node (-1);
-        let sixth = new Node(-5);
+        ll = new LinkedList;
+        first = new Node(12);
+        second = new Node(2);
+        third = new Node(7);
+        fourth = new Node(99);
+        fifth = new Node (-1);
+        sixth = new Node(-5);
 
         ll.head = first;
         first.next = second;
@@ -104,6 +104,86 @@ describe('Patition Linked List', () => {
         fourth.next = fifth;
         fifth.next = sixth;
 
-        let result = partitionList(10, ll.head);
+        result = partitionList(10, ll.head);
+
+        expect(LinkedList.toArray(result)).to.deep.equal([2,7,-1,-5,12,99]);
+
+        ll = new LinkedList;
+        first = new Node(1);
+        second = new Node(2);
+        third = new Node(3);
+        fourth = new Node(-1);
+        fifth = new Node (-2);
+        sixth = new Node(-3);
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+
+        result = partitionList(0, ll.head);
+
+        expect(LinkedList.toArray(result)).to.deep.equal([-1,-2,-3,1,2,3]);
+    })
+
+    it('Should not change the list', () => {
+        let ll = new LinkedList;
+        let first = new Node(1);
+        let second = new Node(2);
+        let third = new Node(3);
+        let fourth = new Node(5);
+        let fifth = new Node (6);
+        let sixth = new Node(7);
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+
+        let result = partitionList(4, ll.head);
+
+        expect(LinkedList.toArray(result)).to.deep.equal([1,2,3,5,6,7]);
+
+        ll = new LinkedList;
+        first = new Node(1);
+        second = new Node(2);
+        third = new Node(3);
+        fourth = new Node(5);
+        fifth = new Node (6);
+        sixth = new Node(7);
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+
+        result = partitionList(0, ll.head);
+
+        expect(LinkedList.toArray(result)).to.deep.equal([1,2,3,5,6,7]);
+
+        ll = new LinkedList;
+        first = new Node(1);
+        second = new Node(2);
+        third = new Node(3);
+        fourth = new Node(5);
+        fifth = new Node (6);
+        sixth = new Node(7);
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+
+        result = partitionList(7, ll.head);
+
+        expect(LinkedList.toArray(result)).to.deep.equal([1,2,3,5,6,7]);
     })
 })
