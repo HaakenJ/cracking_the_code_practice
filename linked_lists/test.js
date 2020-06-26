@@ -5,6 +5,7 @@ const expect = chai.expect;
 const deleteDupes = require('./deleteDupes');
 const partitionList = require('./partitionList');
 const deleteMiddleNode = require('./deleteMiddleNode');
+const sumLists = require('./sumLists');
 
 
 
@@ -217,5 +218,71 @@ describe('Patition Linked List', () => {
         result = partitionList(7, ll.head);
 
         expect(LinkedList.toArray(result)).to.deep.equal([1,2,3,5,6,7]);
+    })
+})
+
+
+
+describe('Sum two linked lists', () => {
+    it('Should correctly sum two lists of sam or different lengths', () => {
+        let head1 = new Node(8);
+        head1.next = new Node(9);
+        head1.next.next = new Node(2);
+
+        let head2 = new Node(1);
+        head2.next = new Node(2);
+        head2.next.next = new Node(3);
+
+        expect(LinkedList.toArray(sumLists(head1, head2))).to.deep.equal([9,1,6]);
+
+        head1 = new Node(2);
+        head1.next = new Node(5);
+
+        head2 = new Node(8);
+        head2.next = new Node(6);
+
+        expect(LinkedList.toArray(sumLists(head1, head2))).to.deep.equal([0,2,1]);
+
+        head1 = new Node(2);
+        head1.next = new Node(5);
+
+        head2 = new Node(2);
+        head2.next = new Node(4);
+
+        expect(LinkedList.toArray(sumLists(head1, head2))).to.deep.equal([4,9]);
+
+        head1 = new Node(5);
+        head1.next = new Node(2);
+
+        head2 = new Node(5);
+        head2.next = new Node(0);
+        head2.next.next = new Node(1);
+
+        expect(LinkedList.toArray(sumLists(head1, head2))).to.deep.equal([0,3,1]);
+
+        head1 = new Node(5);
+        head1.next = new Node(0);
+        head1.next.next = new Node(1);
+
+        head2 = new Node(5);
+        head2.next = new Node(2);
+
+        expect(LinkedList.toArray(sumLists(head1, head2))).to.deep.equal([0,3,1]);
+
+        head1 = new Node(5);
+        head1.next = new Node(0);
+        head1.next.next = new Node(1);
+
+        head2 = null;
+
+        expect(LinkedList.toArray(sumLists(head1, head2))).to.deep.equal([5,0,1]);
+
+        head1 = null;
+        
+        head2 = new Node(5);
+        head2.next = new Node(0);
+        head2.next.next = new Node(1);
+
+        expect(LinkedList.toArray(sumLists(head1, head2))).to.deep.equal([5,0,1]);
     })
 })

@@ -1,6 +1,8 @@
 const { LinkedList, Node } = require('./LinkedList');
 
 const sumLists = (h1, h2) => {
+    if (h2 === null) return h1;
+    if (h1 === null) return h2;
     let rem = 0;
     let head = null;
     let n = null;
@@ -28,12 +30,18 @@ const sumLists = (h1, h2) => {
     while (h1 !== null) {
         n.next = new Node(h1.data + rem);
         n = n.next;
+        h1 = h1.next;
         rem = 0;
     }
     while (h2 !== null) {
         n.next = new Node(h2.data + rem);
         n = n.next;
+        h2 = h2.next;
         rem = 0;
+    }
+
+    if (rem > 0) {
+        n.next = new Node(rem);
     }
 
     return head;
