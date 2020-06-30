@@ -214,3 +214,9 @@ describe('String Rotation', () => {
         expect(stringRotation('wawaterbottle','lewawawaterbott')).to.be.false;
     })
 })
+
+describe('One Away', () => {
+    it('Should return true for strings that are one edit or replacement away from each other.', () => {
+        
+    })
+})
