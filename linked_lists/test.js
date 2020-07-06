@@ -6,6 +6,7 @@ const deleteDupes = require('./deleteDupes');
 const partitionList = require('./partitionList');
 const deleteMiddleNode = require('./deleteMiddleNode');
 const sumLists = require('./sumLists');
+const findIntersection = require('./findIntersection');
 
 
 
@@ -221,8 +222,6 @@ describe('Patition Linked List', () => {
     })
 })
 
-
-
 describe('Sum two linked lists', () => {
     it('Should correctly sum two lists of sam or different lengths', () => {
         let head1 = new Node(8);
@@ -285,4 +284,60 @@ describe('Sum two linked lists', () => {
 
         expect(LinkedList.toArray(sumLists(head1, head2))).to.deep.equal([5,0,1]);
     })
+})
+
+describe('Find intersection between two lists', () => {
+    it('Should return the correct intersection', () => {
+        let ll = new LinkedList;
+        let first = new Node(1);
+        let second = new Node(2);
+        let third = new Node(3);
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+
+        let ll2 = new LinkedList;
+        let first2 = new Node(7);
+        let second2 = new Node(234);
+
+        ll2.head = first2;
+        first2.next = second2;
+        second2.next = third;
+
+        expect(findIntersection(ll.head, ll2.head)).to.equal(third)
+
+        ll = new LinkedList;
+        first = new Node(1);
+        second = new Node(2);
+        third = new Node(3);
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+
+        ll2 = new LinkedList;
+
+        ll2.head = first;
+
+        expect(findIntersection(ll.head, ll2.head)).to.equal(first)
+
+        ll = new LinkedList;
+        first = new Node(1);
+        second = new Node(2);
+        third = new Node(3);
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+
+        ll2 = new LinkedList;
+        first2 = new Node(7);
+
+        ll2.head = first2;
+        first2.next = second;
+
+        expect(findIntersection(ll.head, ll2.head)).to.equal(second)
+    })
+        
 })

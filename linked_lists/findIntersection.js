@@ -15,3 +15,5 @@ const findIntersection = (head1, head2) => {
 
     return false;
 }
+
+module.exports = findIntersection;
