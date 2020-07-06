@@ -339,5 +339,45 @@ describe('Find intersection between two lists', () => {
 
         expect(findIntersection(ll.head, ll2.head)).to.equal(second)
     })
+
+    it('Should return false when there is no intersection', () => {
+        let ll = new LinkedList;
+        let first = new Node(1);
+        let second = new Node(2);
+        let third = new Node(3);
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+
+        let ll2 = new LinkedList;
+        let first2 = new Node(7);
+        let second2 = new Node(234);
+
+        ll2.head = first2;
+        first2.next = second2;
+
+        expect(findIntersection(ll.head, ll2.head)).to.be.false;
+
+        ll = new LinkedList;
+        first = new Node(1);
+        second = new Node(2);
+        third = new Node(3);
+
+        ll.head = first;
+        first.next = second;
+        second.next = third;
+
+        ll2 = new LinkedList;
+        first2 = new Node(1);
+        second2 = new Node(2);
+        third2 = new Node(3);
+
+        ll2.head = first2;
+        first2.next = second2;
+        second2.next = third2;
+
+        expect(findIntersection(ll.head, ll2.head)).to.be.false;
+    })
         
 })
