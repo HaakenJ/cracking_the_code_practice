@@ -13,7 +13,7 @@ public class Permutation {
     }
 
     public static boolean permutationCharCount(String s, String t) {
-        if (s.length() != t.length()) return false;
+        if (s.length() != t.length()) return false; // Strings must be same length
 
         int[] letters = new int[128]; // Assumption ASCII
         for (int i = 0; i < s.length(); i++) {
