@@ -1,9 +1,4 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import java.util.HashMap;
-import java.util.Arrays;
+import java.util.*;
 
 public class Stack<Item> implements Iterable<Item> 
 {
@@ -64,5 +59,5 @@ public class Stack<Item> implements Iterable<Item>
 	
 	public static void main(String[] args) 
 	{
-    }
+	}
 }
