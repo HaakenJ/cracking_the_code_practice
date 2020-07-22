@@ -24,4 +24,15 @@ public class oneAway {
         }
         return true;
     }
+
+    boolean isOneEditAway(String s1, String s2) {
+        if (s1.length == s2.length) {
+            return needsOnereplacement(s1, s2);
+        } else if (s1.length() + 1 == s2.length()) {
+            return needsOneInsert(s1, s2);
+        } else if (s1.length() - 1 == s2.length()) {
+            return needsOneInsert(s2, s1);
+        }
+        return false;
+    }
 }
