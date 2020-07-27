@@ -4,16 +4,13 @@ class checkPalindrome {
     public static boolean isPalindrome(String s) 
     {
         if (s.length() > 1) {
-            String sortedStr = s.toLowerCase();
-            sortedStr = sortedStr.replaceAll("\\s+", "");
-            Character[] charArray = new Character[sortedStr.length()];
-            for (int i=0; i < sortedStr.length(); i++) {
-                charArray[i] = sortedStr.charAt(i);
-            }
-            Arrays.sort(charArray);
+            int i, j;
+            int len = s.length();
 
-            for (char c: charArray) {
-                System.out.println(c);
+            for (i=0, j=len-1; i < len/2; i++, j--) {
+                if (s.charAt(i) != s.charAt(j)) {
+                    return false;
+                }
             }
         }
         return true;
@@ -21,6 +18,10 @@ class checkPalindrome {
 
     public static void main(String[] args)
     {
-        isPalindrome("he l lo");
+        assert(!isPalindrome("hello"));
+        assert(!isPalindrome("lalalass"));
+        assert(isPalindrome("helloh"));
+        assert(isPalindrome(" ra ce ca r"));
+        assert(isPalindrome("a"));
     }
 }
