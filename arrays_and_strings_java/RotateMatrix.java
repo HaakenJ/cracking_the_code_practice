@@ -8,7 +8,7 @@ class RotateMatrix {
         }
 
         int len = matrix.length - 1;
-        for (int i = len, j = 0; i >= 0; i--, e++) {
+        for (int i = len, j = 0; i >= 0; i--, j++) {
             for (int k = 0; k <= len; k++) {
                 result[k][i] = matrix[j][k];
             }
