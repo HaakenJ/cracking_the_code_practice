@@ -1,0 +1,41 @@
+class RotateMatrix {
+    public static int[][] rotate(int[][] matrix)
+    {
+        int[][] result = new int[matrix.length][matrix[0].length];
+        
+        for (int i = 0; i < matrix.length; i++) {
+            result[i] = [];
+        }
+
+        int len = matrix.length - 1;
+        for (int i = len, j = 0; i >= 0; i--, e++) {
+            for (int k = 0; k <= len; k++) {
+                result[k][i] = matrix[j][k];
+            }
+        }
+
+        return result;
+    }
+
+    public static void printMatrix(int[][] matrix)
+    {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j]);
+            }
+            System.out.print("\n");
+        }
+    }
+
+    public static void main (String[] args)
+    {
+        int[][] matrix = {
+            {1,2,3,4},
+            {5,6,7,8},
+            {9,10,11,12},
+            {13,14,15,16}
+        };
+
+        printMatrix(rotate(matrix));
+    }
+}
