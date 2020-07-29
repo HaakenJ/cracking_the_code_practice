@@ -17,6 +17,24 @@ class RotateMatrix {
         return result;
     }
 
+    public static int[][] rotateInPlace(int[][] matrix)
+    {
+        if (matrix.length <= 1) return matrix;
+
+        int n = matrix.length - 1;
+
+        for (int first=0, last=n; first<last; first++, last--) {
+            for (int offset = 0; first+offset < last; offset++) {
+                int temp = matrix[first][first + offset];
+                matrix[first][first + offset] = matrix[last - offset][first];
+                matrix[last - offset][first] = matrix[last][last - offset];
+                matrix[last][last - offset] = matrix[first + offset][last];
+                matrix[first + offset][last] = temp;
+            }
+        }
+        return matrix;
+    }
+
     public static void printMatrix(int[][] matrix)
     {
         for (int i = 0; i < matrix.length; i++) {
@@ -37,5 +55,6 @@ class RotateMatrix {
         };
 
         printMatrix(rotate(matrix));
+        printMatrix(rotateInPlace(matrix));
     }
 }
