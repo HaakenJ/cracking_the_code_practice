@@ -80,6 +80,29 @@ public class LinkedList {
         return head1;
     }
 
+    public static void swapNodes(Node n1, Node n2)
+    {
+        int temp = n1.data;
+        n1.data = n2.data;
+        n2.data = temp;
+    }
+
+    public static void partitionList(LinkedList list, int partition)
+    {
+        Node head = list.head;
+        Node lower = list.head;
+        
+        while (head != null) {
+            if (head.data < partition) {
+                swapNodes(head, lower);
+                head = head.next;
+                lower = lower.next;
+            } else {
+                head = head.next;
+            }
+        }
+    }
+
     public int length()
     {
         int len = 0;
@@ -107,12 +130,13 @@ public class LinkedList {
     {
         LinkedList list = new LinkedList();
 
-        Node one = new Node(3);
-        Node two = new Node(3);
-        Node three = new Node(3);
-        Node four = new Node(4);
-        Node five = new Node(5);
-        Node six = new Node(6);
+        Node one = new Node(10);
+        Node two = new Node(9);
+        Node three = new Node(8);
+        Node four = new Node(7);
+        Node five = new Node(6);
+        Node six = new Node(5);
+        Node seven = new Node(4);
 
         list.head = one;
         one.next = two;
@@ -120,19 +144,10 @@ public class LinkedList {
         three.next = four;
         four.next = five;
         five.next = six;
+        six.next = seven;
 
+        partitionList(list, 5);
 
-        LinkedList list2 = new LinkedList();
-
-        Node la = new Node(1); 
-        Node lala = new Node(2); 
-        Node lalala = new Node(3);
-
-        list2.head = la;
-        la.next = lalala;
-        lalala.next = three;
-
-        printList(findIntersection(list, list2));
-
+        printList(list.head);
     }
 }
