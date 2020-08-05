@@ -2,7 +2,7 @@ import java.util.*;
 
 public class LinkedList {
     Node head;
-    Node last;
+    Node tail;
 
     static class Node {
         int data;
@@ -20,14 +20,14 @@ public class LinkedList {
         Node newNode = new Node(data);
         newNode.next = null;
 
-        // If the list is empty then set head and last as the new node.
+        // If the list is empty then set head and tail as the new node.
         if (this.head == null) {
             this.head = newNode;
-            this.last = newNode;
+            this.tail = newNode;
         }
         else {
-            this.last.next = newNode;
-            this.last = newNode;
+            this.tail.next = newNode;
+            this.tail = newNode;
         }
     }
 
@@ -53,26 +53,37 @@ public class LinkedList {
         }
     }
 
-    public static Node findIntersection(Node head1, Node head2)
+    public static Node findIntersection(LinkedList list1, LinkedList list2)
     {
-        HashSet<Node> set = new HashSet<Node>();
+        if (list1.tail != list2.tail) return null;
 
-        while (head1 != null) {
-            set.add(head1);
-            head1 = head1.next;
+        int diff = Math.abs(list1.length() - list2.length());
+
+        Node head1 = list1.head;
+        Node head2 = list2.head;
+
+        if (list1.length() > list2.length()) {
+            for (int i = 0; i < diff; i++) {
+                head1 = head1.next;
+            }
+        } else {
+            for (int i = 0; i < diff; i++) {
+                head2 = head2.next;
+            }
         }
 
-        while (head2 != null) {
-            if (set.contains(head2)) return head2;
+        while (head1 != head2) {
+            head1 = head1.next;
             head2 = head2.next;
         }
 
-        return null;
+        return head1;
     }
 
-    public static int getLength(Node head)
+    public int length()
     {
         int len = 0;
+        Node head = this.head;
 
         while (head != null) {
             head = head.next;
@@ -118,12 +129,10 @@ public class LinkedList {
         Node lalala = new Node(3);
 
         list2.head = la;
-        la.next = lala;
-        lala.next = lalala;
+        la.next = lalala;
         lalala.next = three;
 
-        // printList(findIntersection(list.head, list2.head));
+        printList(findIntersection(list, list2));
 
-        System.out.println(getLength(list.head));
     }
 }
