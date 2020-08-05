@@ -40,22 +40,50 @@ public class LinkedList {
     public static void deleteDupes(LinkedList list)
     {
         Node n = list.head;
-        Map hashMap = new HashMap();
+        HashSet<Integer> set = new HashSet<Integer>();
         Node prev = null;
         while (n != null) {
-            if (hashMap.containsKey(n.data)) {
+            if (set.contains(n.data)) {
                 prev.next = n.next;
             } else {
-                hashMap.put(n.data, true);
+                set.add(n.data);
                 prev = n;
             }
             n = n.next;
         }
     }
 
-    public static void printList(LinkedList list)
+    public static Node findIntersection(Node head1, Node head2)
     {
-        Node currNode = list.head;
+        HashSet<Node> set = new HashSet<Node>();
+
+        while (head1 != null) {
+            set.add(head1);
+            head1 = head1.next;
+        }
+
+        while (head2 != null) {
+            if (set.contains(head2)) return head2;
+            head2 = head2.next;
+        }
+
+        return null;
+    }
+
+    public static int getLength(Node head)
+    {
+        int len = 0;
+
+        while (head != null) {
+            head = head.next;
+            len++;
+        }
+        return len;
+    }
+
+    public static void printList(Node head)
+    {
+        Node currNode = head;
 
         while (currNode != null) {
             System.out.print(currNode.data + " -> ");
@@ -68,19 +96,34 @@ public class LinkedList {
     {
         LinkedList list = new LinkedList();
 
-        list.insert(1); 
-        list.insert(2); 
-        list.insert(4); 
-        list.insert(4); 
-        list.insert(6); 
-        list.insert(6); 
-        list.insert(7); 
-        list.insert(8);
+        Node one = new Node(3);
+        Node two = new Node(3);
+        Node three = new Node(3);
+        Node four = new Node(4);
+        Node five = new Node(5);
+        Node six = new Node(6);
 
-        printList(list);
+        list.head = one;
+        one.next = two;
+        two.next = three;
+        three.next = four;
+        four.next = five;
+        five.next = six;
 
-        deleteDupes(list);
 
-        printList(list);
+        LinkedList list2 = new LinkedList();
+
+        Node la = new Node(1); 
+        Node lala = new Node(2); 
+        Node lalala = new Node(3);
+
+        list2.head = la;
+        la.next = lala;
+        lala.next = lalala;
+        lalala.next = three;
+
+        // printList(findIntersection(list.head, list2.head));
+
+        System.out.println(getLength(list.head));
     }
 }
