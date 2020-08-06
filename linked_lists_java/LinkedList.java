@@ -12,6 +12,10 @@ public class LinkedList {
             data = d;
             next = null;
         }
+
+        Node() {
+            next = null;
+        }
     }
 
     public void insert(int data)
@@ -120,34 +124,61 @@ public class LinkedList {
         Node currNode = head;
 
         while (currNode != null) {
-            System.out.print(currNode.data + " -> ");
+            System.out.print(currNode.data);
+            if (currNode.next != null) System.out.print(" -> ");
             currNode = currNode.next;
         }
         System.out.print("\n");
     }
 
+    static Node addLists(Node l1, Node l2) {
+        return addLists(l1, l2, 0);
+    }
+
+    static Node addLists(Node l1, Node l2, int rem) {
+        if (l1 == null && l2 == null && rem == 0) {
+            return null;
+        }
+
+        Node result = new Node();
+
+        int value = rem;
+        if (l1 != null) {
+            value += l1.data;
+        }
+        if (l2 != null) {
+            value += l2.data;
+        }
+
+        result.data = value % 10;
+
+        if (l1 != null || l2 != null) {
+            Node more = addLists(l1 == null ? null : l1.next,
+                                 l2 == null ? null : l2.next,
+                                 value >= 10 ? 1 : 0);
+            
+            result.next = more;
+        }
+        return result;
+    }
+
     public static void main(String args[])
     {
-        LinkedList list = new LinkedList();
 
-        Node one = new Node(10);
-        Node two = new Node(9);
-        Node three = new Node(8);
-        Node four = new Node(7);
-        Node five = new Node(6);
-        Node six = new Node(5);
-        Node seven = new Node(4);
+        Node one = new Node(7);
+        Node two = new Node(1);
+        Node three = new Node(6);
 
-        list.head = one;
+        Node four = new Node(5);
+        Node five = new Node(9);
+        Node six = new Node(2);
+
         one.next = two;
         two.next = three;
-        three.next = four;
+
         four.next = five;
         five.next = six;
-        six.next = seven;
 
-        partitionList(list, 5);
-
-        printList(list.head);
+        printList(addLists(one, four));
     }
 }
